@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,7 +27,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,22 +58,22 @@ fun CuadriculaApp(modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = modifier
-            .fillMaxSize().statusBarsPadding().navigationBarsPadding()
-            .padding(8.dp),
+            .fillMaxSize().statusBarsPadding().padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(DataSource.topics) { topic ->
-            TopicCard(topic, modifier = Modifier)
+        val allTopics = DataSource.topics + DataSource.topics
+        items(allTopics) { topic ->
+            TopicCard(topic)
         }
     }
-
 }
 
 @Composable
 fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
     Card(modifier = modifier) {
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(modifier = Modifier
+            .fillMaxSize()) {
             Box {
                 Image(
                     painter = painterResource(topic.imageResourceId),
