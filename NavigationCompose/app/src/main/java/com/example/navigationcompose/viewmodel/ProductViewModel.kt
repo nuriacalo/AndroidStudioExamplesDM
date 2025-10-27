@@ -20,4 +20,7 @@ class ProductViewModel : ViewModel() {
         return _uiState.value.products.firstOrNull { it.id == id }
             ?: Product(id = id, title = "Producto no encontrado")
     }
+
+    fun addToCart(product: Product) {
+    }
 }

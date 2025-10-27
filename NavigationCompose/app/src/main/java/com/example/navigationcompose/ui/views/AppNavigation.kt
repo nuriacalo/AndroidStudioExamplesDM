@@ -28,7 +28,7 @@ fun AppNavigation(viewModel: ProductViewModel = viewModel()) {
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getInt("id") ?: 0
             val product = viewModel.getProductById(id)
-            DetailScreen(product = product, onBack = { navController.popBackStack() })
+            DetailScreenAdvanced (product = product, onBack = { navController.popBackStack() })
 
         }
     }
