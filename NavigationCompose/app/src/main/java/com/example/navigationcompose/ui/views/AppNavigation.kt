@@ -16,20 +16,34 @@ import com.example.navigationcompose.viewmodel.ProductViewModel
 fun AppNavigation(viewModel: ProductViewModel = viewModel()) {
     val navController: NavHostController = rememberNavController()
     val uiState by viewModel.uiState.collectAsState()
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
+    NavHost(navController, startDestination = "home") {
+        composable(route = "home") {
             HomeScreen(
                 products = uiState.products,
-                onNavigateToDatail = { id -> navController.navigate("detail/$id") })
+                total = uiState.cartItems.sumOf { it.price * it.quantity },
+                onNavigateToDetail = {id -> navController.navigate("detalle/$id")},
+                onNavigateToCart = {navController.navigate("cart")}
+            )
         }
-        composable(
-            route = "detail/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        composable(route = "detalle/{id}",
+            arguments = listOf(navArgument("id") {type = NavType.IntType})
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getInt("id") ?: 0
             val product = viewModel.getProductById(id)
-            DetailScreenAdvanced (product = product, onBack = { navController.popBackStack() })
-
+            DetailScreenAdvanced(
+                product = product,
+                onBack = {navController.popBackStack()},
+                onAddToCart = { product, quantity -> viewModel.addToCart(product,quantity)
+                    navController.popBackStack()
+                }
+            )
+        }
+        composable(route = "cart") {
+            CartScreen(
+                cartItems = uiState.cartItems,
+                onBack = {navController.popBackStack()},
+                onRemoveFromCart = {id -> viewModel.removeFromCart(id)}
+            )
         }
     }
 

@@ -4,5 +4,5 @@ import com.example.navigationcompose.data.Product
 
 data class ProductsUiState (
     val products: List<Product> = emptyList(),
-    val cartItem: List<CartItem> = emptyList()
+    val cartItems: List<CartItem> = emptyList()
 )

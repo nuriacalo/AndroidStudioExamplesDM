@@ -1,6 +1,8 @@
 package com.example.navigationcompose.ui.views
 
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,10 +40,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.navigationcompose.data.Product
+import com.example.navigationcompose.ui.components.AddToCartDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreenAdvanced(product: Product, onBack: () -> Unit) {
+fun DetailScreenAdvanced(product: Product, onBack: () -> Unit, onAddToCart: (Product, Int) -> Unit) {
     val mContext = LocalContext.current
     val scrollState = rememberScrollState()
     var showDialog by remember { mutableStateOf(false) }
@@ -50,7 +53,7 @@ fun DetailScreenAdvanced(product: Product, onBack: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = {
-                    Column() {
+                    Column {
                         Text("Detalle del producto")
                         Text("SKU: ${product.sku}", fontSize = 12.sp)
                     }
@@ -127,13 +130,27 @@ fun DetailScreenAdvanced(product: Product, onBack: () -> Unit) {
             }
             Spacer(modifier = Modifier.height(10.dp))
 
-            Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically,
+            Row(horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth().padding(20.dp)) {
-                Button(onClick = {  }) {
+                Button(onClick = { showDialog = true }) {
                     Text(text = "Añadir al Carrito")
                 }
+                if (showDialog){
+                    if (product.stock == 0){
+                        mensajeToast(mContext, "No hay stock disponible")
+                    }else{
+                        AddToCartDialog(onDismiss = {showDialog = false}, onConfirm = { quantity ->
+                            showDialog = false
+                            onAddToCart(product, quantity)
+                        })
+                    }
+                }
             }
-
         }
     }
+}
+
+fun mensajeToast(context: Context, text: String){
+    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
 }
