@@ -1,43 +1,38 @@
-# Android Studio Examples
+Mars Photos
+==================================
 
-Este repositorio contiene ejemplos de aplicaciones Android desarrolladas en Android Studio como parte del aprendizaje de desarrollo Android.
+Mars Photos app is a demo app that shows actual images of Mars' surface. These images are
+real-life photos from Mars captured by NASA's Mars rovers. The data is stored on a Web server
+as a REST web service.
 
-**Estructura organizada:** Este repositorio forma parte de una estructura organizada por materias en AndroidStudioProjects. Cada materia tiene su propio repositorio para mantener los proyectos separados y organizados.
+This app demonstrated the use of [Retrofit](https://square.github.io/retrofit/) to make REST requests to the web service, [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) to
+handle the deserialization of the returned JSON to Kotlin data objects, and [Coil](https://coil-kt.github.io/coil/) to load images by URL.
 
-## Proyectos Incluidos
+Pre-requisites
+--------------
 
-### 1. HelloWord
-Mi primera aplicación Android - un clásico "Hello World" para comenzar con el desarrollo Android.
+You need to know:
+- How to create Composable functions.
+- How to use architecture components including ViewModel.
+- How to use coroutines for long-running tasks.
+- Familiarity with lazy grid
 
-### 2. GreetingCard
-Una aplicación de tarjeta de saludo que demuestra el uso básico de Jetpack Compose para crear interfaces de usuario.
+Getting Started
+---------------
 
-### 3. HappyBirthday
-Una aplicación de felicitación de cumpleaños que muestra el uso de componentes de UI y layouts en Android.
+1. [Install Android Studio](https://developer.android.com/studio/install.html), if you don't already
+   have it.
+2. Download the sample.
+3. Import the sample into Android Studio.
+4. Build and run the sample.
 
-### 4. DiceRoll
-Una aplicación interactiva de lanzamiento de dados que demuestra el manejo de eventos y el cambio de estado en Android.
+## [Build this app through hands-on codelabs in the Android Basics with Compose Course](https://developer.android.com/courses/android-basics-compose/course)
 
-## Tecnologías Utilizadas
+### [Get data from the internet](https://developer.android.com/codelabs/basic-android-kotlin-compose-getting-data-internet)
+Learn how to use community-developed libraries to connect to a web service to retrieve and display data in your Android Kotlin compose app. 
 
-- **Lenguaje**: Kotlin
-- **Framework UI**: Jetpack Compose
-- **IDE**: Android Studio
-- **Build System**: Gradle
+### [Add repository and Manual DI](https://developer.android.com/codelabs/basic-android-kotlin-compose-add-repository)
+Learn how to improve the architecture of the app by separating the network calls into a repository.
 
-## Cómo ejecutar los proyectos
-
-1. Clona este repositorio
-2. Abre Android Studio
-3. Selecciona "Open an existing Android Studio project"
-4. Navega a la carpeta del proyecto específico que deseas ejecutar
-5. Espera a que Gradle sincronice el proyecto
-6. Ejecuta la aplicación en un emulador o dispositivo físico
-
-## Autor
-
-Nuria Calo
-
-## Notas
-
-Estos proyectos son ejemplos de aprendizaje y pueden no estar optimizados para uso en producción.
+### [Load and display images from the internet](https://developer.android.com/codelabs/basic-android-kotlin-compose-load-images)
+Use the Coil library to load and display photos from the internet in your Android Compose app. 
