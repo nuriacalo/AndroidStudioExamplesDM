@@ -16,5 +16,5 @@ class User(
     val phone: String,
     val height: Int,
     val weight: Int,
-    val company: Company
+    val company: Object
 )

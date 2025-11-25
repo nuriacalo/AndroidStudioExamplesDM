@@ -4,6 +4,8 @@ class DefaultAppContainer : AppContainer {
 
     private val baseUrlDummyJson = "https://dummyjson.com/"
 
+    private val dummyJsonApiService = DummyJsonApiService.create(baseUrlDummyJson)
+
 
 
 }
