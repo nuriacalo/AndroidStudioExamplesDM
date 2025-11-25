@@ -1,6 +1,7 @@
 package com.example.replicarusuarios.viewmodel
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
 import okhttp3.Call
 
 class UserViewModel {
@@ -13,6 +14,7 @@ class UserViewModel {
                 _users.postValue(usersFromApi.users)
             }
         }
+
 
             companion object {
                 val Factory: ViewModelProvider.Factory = viewModelFactory {

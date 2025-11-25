@@ -1,6 +1,8 @@
 package com.example.replicarusuarios.data
 
-interface  MockApiRepository {
+import com.example.replicarusuarios.network.MockApiService
+
+class  MockApiRepository {
 
     class NetworkMockApiRepository(
          private val mockApiService: MockApiService
