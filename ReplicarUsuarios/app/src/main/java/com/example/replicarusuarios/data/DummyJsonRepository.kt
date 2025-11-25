@@ -2,7 +2,7 @@ package com.example.replicarusuarios.data
 
 import com.example.replicarusuarios.network.DummyJsonApiService
 
-class DummyJsonRepository {
+interface DummyJsonRepository {
     suspend fun getUsers(): UserResponse {
         TODO("Not yet implemented")
     }
@@ -12,6 +12,7 @@ class DummyJsonRepository {
     ) : DummyJsonRepository {
         override suspend fun getUsers(): UserResponse {
             return dummyJsonApiService.getUsers()
+
         }
     }
 }
