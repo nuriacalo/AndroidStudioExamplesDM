@@ -11,6 +11,7 @@ enum class ApiQueryState {
 }
 
 data class UserUiState(
-    val apiQueryState: ApiQueryState = ApiQueryState.SUCCESS_FINISH,
+    val apiQueryState: ApiQueryState = ApiQueryState.LOADING,
     val message: String = ""
 )
+

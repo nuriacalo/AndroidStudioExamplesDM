@@ -1,9 +1,10 @@
 package com.example.replicarusuarios.data
 
+
 import kotlinx.serialization.Serializable
 
 @Serializable
-class User(
+data class User(
     val id: Int,
     val firstName: String,
     val lastName: String,
@@ -14,7 +15,7 @@ class User(
     val password: String,
     val gender: String,
     val phone: String,
-    val height: Int,
-    val weight: Int,
-    val company: Object
+    val height: Double,
+    val weight: Double,
+    val company: Company
 )
