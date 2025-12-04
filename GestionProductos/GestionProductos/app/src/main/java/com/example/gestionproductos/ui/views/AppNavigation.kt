@@ -11,9 +11,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.gestionproductos.viewmodel.ProductViewModel
-
 @Composable
-fun AppNavigation(viewModel: ProductViewModel = viewModel()) {
+fun AppNavigation(viewModel: ProductViewModel = viewModel(factory = ProductViewModel.Factory)) {
 
     val uiState by viewModel.uiState.collectAsState()
     val navController: NavHostController = rememberNavController()

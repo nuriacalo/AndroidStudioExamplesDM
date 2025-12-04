@@ -1,5 +1,6 @@
 package com.example.gestionproductos.ui.views
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -66,6 +67,7 @@ fun HomeScreen(products: List<Product>,
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Log.v("ProductViewModel", "ProductViewModel created ${products.size}")
             items(products) {
                     product ->
                 ProductCard(product = product,

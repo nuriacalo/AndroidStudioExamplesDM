@@ -1,7 +1,9 @@
 package com.example.gestionproductos.data
 
 import androidx.annotation.DrawableRes
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Product(
     val id: Int,
     val title: String,
