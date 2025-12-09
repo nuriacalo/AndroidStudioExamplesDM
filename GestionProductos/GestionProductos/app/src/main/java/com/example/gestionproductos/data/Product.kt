@@ -15,4 +15,11 @@ data class Product(
     val availabilityStatus: String = "",
     @DrawableRes val image: Int = 0,
     val thumbnail: String = ""
-)
+) {
+    val shortDescription: String
+        get() = if (description.length > 80) {
+            description.substring(0, 80) + "..."
+        } else {
+            description
+        }
+}

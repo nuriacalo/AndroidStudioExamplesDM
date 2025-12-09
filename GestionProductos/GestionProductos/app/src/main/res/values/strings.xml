@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GestionProductos</string>
+    <string name="loading">Cargando productos ...</string>
+    <string name="loading_failed">Error cargando productos ...</string>
+    <string name="retry">Volver a intentar</string>
+    <string name="stock">STOCK</string>
+    <string name="price">PRECIO</string>
 </resources>

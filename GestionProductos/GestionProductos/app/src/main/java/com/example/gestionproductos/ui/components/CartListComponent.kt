@@ -23,16 +23,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.gestionproductos.data.CartItem
 
 @Composable
-fun CartListComponent(cartItem: CartItem,
-                      onRemoveFromCart: (Int) -> Unit) {
-    Card (
-        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+fun CartListComponent(
+    cartItem: CartItem,
+    onRemoveFromCart: (Int) -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = CardDefaults.elevatedShape
     ) {
@@ -71,10 +76,12 @@ fun CartListComponent(cartItem: CartItem,
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Image(
-                painter = painterResource(cartItem.image),
-                contentDescription = cartItem.title,
-                modifier = Modifier.padding(end = 20.dp)
+            SafeImageFromRes(
+                imageRes = cartItem.image,
+                contentDescription = "Imagen del producto",
+                modifier = Modifier
+                    .height(64.dp)
+                    .then(Modifier)
             )
             Column(
                 modifier = Modifier.weight(1f)
@@ -107,11 +114,24 @@ fun CartListComponent(cartItem: CartItem,
         }
     }
 
-
-
-
-
-
-
-
 }
+
+@Composable
+fun SafeImageFromRes(
+    imageRes: Int?,
+    contentDescription: String?,
+    modifier: Modifier = Modifier
+) {
+    val validRes =
+        if (imageRes != null && imageRes != 0) imageRes else android.R.drawable.ic_menu_report_image
+    Image(
+        painter = painterResource(id = validRes),
+        contentDescription = contentDescription,
+        contentScale = ContentScale.Crop,
+        modifier = modifier
+    )
+}
+
+
+
+

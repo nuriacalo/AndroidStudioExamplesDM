@@ -74,9 +74,10 @@ fun  DetailScreenAdvanced(product: Product,
         ) {
 
             // Imagen principal
-            Image(
-                painter = painterResource(product.image),
-                contentDescription = product.description
+            SafeImageFromRes(
+                imageRes = product.image,
+                contentDescription = product.description,
+                modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -183,3 +184,12 @@ fun mensajeToast(context: Context, text: String) {
 }
 
 
+@Composable
+private fun SafeImageFromRes(imageRes: Int, contentDescription: String?, modifier: Modifier = Modifier) {
+    val validRes = if (imageRes != 0) imageRes else android.R.drawable.ic_menu_report_image
+    Image(
+        painter = painterResource(id = validRes),
+        contentDescription = contentDescription,
+        modifier = modifier
+    )
+}
